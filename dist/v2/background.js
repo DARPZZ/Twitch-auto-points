@@ -1,0 +1,1 @@
+(()=>{"use strict";console.warn("Background script is loaded")})();

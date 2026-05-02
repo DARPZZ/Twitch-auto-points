@@ -1,0 +1,22 @@
+{
+  "name": "Twitch-auto-points",
+  "description": "This extension is made for demonstration purposes",
+  "version": "1.0",
+  "manifest_version": 2,
+  "permissions": [
+    "activeTab",
+    "https://www.twitch.tv/*",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://www.twitch.tv/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  }
+}
