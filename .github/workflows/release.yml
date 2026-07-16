@@ -36,6 +36,8 @@ jobs:
         run: |
           web-ext sign \
             --source-dir dist/v2 \
+            --channel unlisted \
+            --approval-timeout 900000 \
             --api-key "${{ secrets.AMO_JWT_ISSUER }}" \
             --api-secret "${{ secrets.AMO_JWT_SECRET }}"
 
