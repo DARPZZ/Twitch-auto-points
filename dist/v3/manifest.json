@@ -1,7 +1,7 @@
 {
   "name": "Twitch-auto-points",
   "description": "This extension is made for twtich auto claiming channel points",
-  "version": "1.0",
+  "version": "1.1.0",
   "manifest_version": 3,
   "permissions": ["activeTab", "scripting", "storage"],
   "content_scripts": [
