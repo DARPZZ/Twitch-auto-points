@@ -1,1 +1,1 @@
-(()=>{"use strict";console.warn("Background script is loaded")})();
+console.warn("Background script is loaded");

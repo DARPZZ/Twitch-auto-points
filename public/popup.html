@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      body {
+        width: 280px;
+        padding: 20px;
+        background: #18181b;
+        color: white;
+        font-family: Arial;
+      }
+
+      h2 {
+        text-align: center;
+        color: #9147ff;
+      }
+
+      .card {
+        background: #26262c;
+        padding: 15px;
+        border-radius: 12px;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+
+      .big {
+        font-size: 40px;
+        color: #9147ff;
+        font-weight: bold;
+      }
+
+      .info {
+        display: flex;
+        justify-content: space-between;
+        background: #26262c;
+        padding: 10px;
+        margin-top: 8px;
+        border-radius: 8px;
+      }
+
+      button {
+        width: 100%;
+        padding: 10px;
+        margin-top: 15px;
+        border: 0;
+        border-radius: 8px;
+        background: #9147ff;
+        color: white;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Twitch Points</h2>
+    <div class="card">
+      <div>Points Claimed</div>
+      <div id="count" class="big">0</div>
+    </div>
+    <div class="info">
+      <span>Channel</span>
+      <span id="channel">-</span>
+    </div>
+    <div class="info">
+      <span>Watch Time</span>
+      <span id="watchTime"> 0h 0m </span>
+    </div>
+    <div class="info">
+      <span>Last Claim</span>
+      <span id="lastClaim"> Never </span>
+    </div>
+    <button id="reset">Reset Counter</button>
+    <script src="popup.js"></script>
+  </body>
+</html>

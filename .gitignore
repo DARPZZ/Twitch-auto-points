@@ -43,3 +43,4 @@ webpack-cache/
 
 # Source maps (optional)
 *.map
+node_modules/

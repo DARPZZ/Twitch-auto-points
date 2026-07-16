@@ -1,5 +1,4 @@
 const fs = require("fs");
-
 const version = process.env.VERSION;
 
 const json = {
