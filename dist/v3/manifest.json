@@ -13,8 +13,5 @@
   "host_permissions": ["http://*/*", "https://*/*"],
   "background": {
     "service_worker": "background.js"
-  },
-  "data_collection_permissions": {
-    "collects_user_data": false
   }
 }
