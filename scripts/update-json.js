@@ -4,19 +4,15 @@ const version = process.env.VERSION;
 
 const json = {
   addons: {
-    "@extension-twitch-auto-collection": {
+    "@extension-twitch-auto-points-collection": {
       updates: [
         {
           version,
-          update_link:
-            `https://github.com/DARPZZ/Twitch-auto-points/releases/download/v${version}/twitch-auto-points-${version}.xpi`
-        }
-      ]
-    }
-  }
+          update_link: `https://github.com/DARPZZ/Twitch-auto-points/releases/download/v${version}/twitch-auto-points-${version}.xpi`,
+        },
+      ],
+    },
+  },
 };
 
-fs.writeFileSync(
-  "updates.json",
-  JSON.stringify(json, null, 2)
-);
+fs.writeFileSync("updates.json", JSON.stringify(json, null, 2));
