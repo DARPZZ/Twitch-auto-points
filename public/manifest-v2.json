@@ -1,7 +1,7 @@
 {
   "name": "Twitch-auto-points",
   "description": "This extension is made for Twitch auto claiming channel points",
-  "version": "1.0",
+  "version": "1.0.1",
   "manifest_version": 2,
 
   "permissions": [
@@ -25,7 +25,7 @@
 
   "browser_specific_settings": {
     "gecko": {
-      "id": "@extension-twitch-auto-collection",
+      "id": "@extension-twitch-auto-points-collection",
       "update_url": "https://darpzz.github.io/Twitch-auto-points/updates.json",
       "data_collection_permissions": {
         "required": ["none"]
