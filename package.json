@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:v2": "cross-env MANIFEST_VERSION=2 webpack --config webpack/webpack.config.js",
-    "build:v3": "cross-env MANIFEST_VERSION=3 webpack --config webpack/webpack.config.js",
-    "build": "npm run build:v2 && npm run build:v3"
+    "build:firefox": "cross-env MANIFEST_VERSION=2 webpack --config webpack/webpack.config.js",
+    "build:chrome": "cross-env MANIFEST_VERSION=3 webpack --config webpack/webpack.config.js",
+    "build": "npm run build:firefox && npm run build:chrome"
   },
   "keywords": [],
   "author": "",

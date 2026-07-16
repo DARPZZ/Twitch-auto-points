@@ -1,0 +1,81 @@
+name: Release Firefox Extension
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - run: npm ci
+
+      - name: Build Firefox Extension
+        run: npm run build:firefox
+
+      - run: npm install -g web-ext
+
+      - name: Sign Extension
+        run: |
+          web-ext sign \
+            --source-dir dist/v2 \
+            --api-key "${{ secrets.AMO_JWT_ISSUER }}" \
+            --api-secret "${{ secrets.AMO_JWT_SECRET }}"
+
+      - name: Find signed XPI
+        id: xpi
+        run: |
+          FILE=$(find web-ext-artifacts -name "*.xpi" | head -n1)
+          echo "file=$FILE" >> $GITHUB_OUTPUT
+          echo "filename=$(basename "$FILE")" >> $GITHUB_OUTPUT
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ steps.xpi.outputs.file }}
+
+      - name: Generate updates.json
+        run: |
+          VERSION=${GITHUB_REF_NAME#v}
+
+          mkdir pages
+
+          cat > pages/updates.json <<EOF
+          {
+            "addons": {
+              "@extension-twitch-auto-collection": {
+                "updates": [
+                  {
+                    "version": "$VERSION",
+                    "update_link": "https://github.com/DARPZZ/Twitch-auto-points/releases/download/v$VERSION/${{ steps.xpi.outputs.filename }}"
+                  }
+                ]
+              }
+            }
+          }
+          EOF
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: pages
+
+      - name: Deploy Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
